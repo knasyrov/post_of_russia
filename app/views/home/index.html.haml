@@ -1,0 +1,8 @@
+.left_pane
+  .left_pane_content
+    = form_tag info_path, remote: true do
+      = label_tag :tracking_number, 'Почтовый идентификатор'
+      = text_field_tag :tracking_number, (@tracking_number || '10212261113505')
+      = submit_tag 'Найти'
+.right_pane
+  .right_pane_content

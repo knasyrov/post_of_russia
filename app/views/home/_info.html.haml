@@ -1,0 +1,22 @@
+- if @history.present?
+  %table
+    %thead
+      %tr
+        %td Операция
+        %td Дата
+        %td Место провед. операции
+        %td Аттрибут опер.
+        %td Вес гр.
+        %td Посылка
+        %td Адресовано
+    - @history.each do |rec|
+      %tr
+        %td= rec[:operation_parameters][:oper_type][:name]
+        %td= l(rec[:operation_parameters][:oper_date], format: :short)
+        %td= "#{rec[:address_parameters][:operation_address][:index]} - #{rec[:address_parameters][:operation_address][:description]}"
+        %td= rec[:operation_parameters][:oper_attr][:name]
+        %td= rec[:item_parameters][:mass]
+        %td= rec[:item_parameters][:complex_item_name]
+        %td= "#{rec[:address_parameters][:destination_address][:index]} - #{rec[:address_parameters][:destination_address][:description]}" if rec[:address_parameters][:destination_address]
+- else
+  Не найдено
